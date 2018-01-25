@@ -30,13 +30,14 @@ is_slot_device=0;
 mount -o rw,remount -t auto /system;
 
 # Alert of unsupported Android version
+ui_print "Checking Android version..."
 android_ver=$(grep "^ro.build.version.release" /system/build.prop | cut -d= -f2);
 case "$android_ver" in
   "8.1.0") support_status="supported";;
   *) support_status="unsupported";;
 esac;
 ui_print " ";
-ui_print "Running Android $android_ver..."
+ui_print "Device is running Android $android_ver..."
 ui_print "This kernel is $support_status for this version!";
 
 # Unmount system
