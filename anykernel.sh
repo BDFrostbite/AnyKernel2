@@ -27,6 +27,22 @@ is_slot_device=0;
 # import patching functions/variables - see for reference
 . /tmp/anykernel/tools/ak2-core.sh;
 
+# Mount system to get Android version
+mount -o rw,remount -t auto /system;
+
+# Alert of unsupported Android version
+android_ver=$(grep "^ro.build.version.release" /system/build.prop | cut -d= -f2);
+case "$android_ver" in
+  "8.1.0") support_status="supported";;
+  *) support_status="unsupported";;
+esac;
+ui_print " ";
+ui_print "Running Android $android_ver..."
+ui_print "This kernel is $support_status for this version!";
+
+# Unmount system
+mount -o ro,remount -t auto /system;
+
 ## AnyKernel install
 dump_boot;
 
