@@ -4,8 +4,7 @@
 ## AnyKernel setup
 # begin properties
 properties() {
-kernel.name=Frostbitten Kernel
-owner.name=by Frostbite
+kernel.string=Frostbitten Kernel by Frostbite
 device.name=for Moto G4/G4 Plus
 release.version=Release 15
 do.devicecheck=1
